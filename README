@@ -10,4 +10,4 @@ Front :
     - prod : npm run build / puis hébergement des fichiers statiques (dist/) sur mmi.unilim.fr
 
 
-Modif
+Modification
