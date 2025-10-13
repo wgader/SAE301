@@ -8,3 +8,6 @@ Front :
 
     - dev : npm i / npm run dev en local depuis votre machine
     - prod : npm run build / puis hébergement des fichiers statiques (dist/) sur mmi.unilim.fr
+
+
+Modif
