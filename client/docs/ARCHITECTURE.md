@@ -13,10 +13,7 @@ Cette application est une Single Page Application (SPA) construite avec une arch
 ```
 client/src/
 ├── layouts/           # Structures de page réutilisables
-│   ├── root/
-│   │   ├── layout.js
-│   │   └── template.html
-│   └── dashboard/
+│   └── root/
 │       ├── layout.js
 │       └── template.html
 │
