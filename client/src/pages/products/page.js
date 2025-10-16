@@ -37,6 +37,10 @@ V.createPageFragment = function (data) {
   // Créer le fragment depuis le template
   let pageFragment = htmlToFragment(template);
 
+  // Compteur simple
+  const count = pageFragment.querySelector('#productCount');
+  count.textContent = `${data.length} produit${data.length > 1 ? 's' : ''}`;
+
   // Générer les produits
   let productsDOM = ProductView.dom(data);
 
