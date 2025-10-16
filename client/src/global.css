@@ -1,1 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300..700&display=swap");
+
+@font-face{
+  font-family:"GL Bader Compress";
+  src:url("../assets/font/GL-Bader-Compress-Black.ttf") format("ttf");
+  /* font-weight: 400 700;
+  font-style: normal;
+  font-display: swap; */
+}
+
 @import "tailwindcss";
+
+/* ===============================
+   THEME 
+   =============================== */
+
+@theme inline {
+  --color-bg: var(--clr-bg);
+  --color-text: var(--clr-black);
+  --color-muted: var(--clr-gray-500);
+  --color-brand: var(--clr-purple);
+  --color-warning: var(--clr-amber);
+  --color-error: var(--clr-red);
+
+  /* Boutons */
+  --color-btn-primary-bg: var(--clr-black);
+  --color-btn-primary-fg: var(--clr-white);
+
+  --color-btn-secondary-bg: var(--clr-white);
+  --color-btn-secondary-fg: var(--clr-black);
+  --color-btn-secondary-st: var(--clr-black);
+
+  /* Typos */
+  --font-display:"GL Bader Compress",sans-serif;
+  --font-body:"Roboto Condensed",sans-serif;
+
+  /* Radius */
+  --radius-btn: var(--radius-30);
+
+}
+
+/* ===============================
+   PRIMITIVE TOKENS
+   =============================== */
+
+@layer base {
+  :root {
+    --clr-white: #ffffff;
+    --clr-black: #171717; /* noir utilisé pour titres/texte + btn primaire */
+    --clr-gray-500: #737373; /* gris pour descriptions */
+    --clr-purple: #5d2de6; /* brand/accent */
+    --clr-amber: #f59e0b; /* warning */
+    --clr-red: #dc2626; /* error */
+
+    --clr-bg: var(--clr-white);
+    --radius-30: 30px;
+  }
+}
+
