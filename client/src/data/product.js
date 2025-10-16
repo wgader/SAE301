@@ -70,5 +70,11 @@ ProductData.fetchAll = async function(){
     return data==false ? fakeProducts : data;
 }
 
+ProductData.fetchAllByCategory = async function(category_id) {
+    let data = await getRequest(`products?category=${category_id}`);
+    return data==false ? fakeProducts : data;
+    
+}
+
 
 export {ProductData};

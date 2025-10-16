@@ -16,17 +16,14 @@ require_once("src/Class/Product.php");
  *  c'est utile !
  *  
  */
-class ProductRepository extends EntityRepository
-{
+class ProductRepository extends EntityRepository {
 
-    public function __construct()
-    {
+    public function __construct(){
         // appel au constructeur de la classe mère (va ouvrir la connexion à la bdd)
         parent::__construct();
     }
 
-    public function find($id): ?Product
-    {
+    public function find($id): ?Product{
         /*
             La façon de faire une requête SQL ci-dessous est "meilleur" que celle vue
             au précédent semestre (cnx->query). Notamment l'utilisation de bindParam
@@ -37,9 +34,9 @@ class ProductRepository extends EntityRepository
         $requete->bindParam(':value', $id); // fait le lien entre le "tag" :value et la valeur de $id
         $requete->execute(); // execute la requête
         $answer = $requete->fetch(PDO::FETCH_OBJ);
-
-        if ($answer == false) return null; // may be false if the sql request failed (wrong $id value for example)
-
+        
+        if ($answer==false) return null; // may be false if the sql request failed (wrong $id value for example)
+        
         $p = new Product($answer->id);
         $p->setName($answer->name);
         $p->setImage($answer->image);
@@ -49,80 +46,52 @@ class ProductRepository extends EntityRepository
         return $p;
     }
 
-    public function findAll(): array
-    {
+    public function findAll(): array {
         $requete = $this->cnx->prepare("select * from Product");
         $requete->execute();
         $answer = $requete->fetchAll(PDO::FETCH_OBJ);
 
         $res = [];
-        foreach ($answer as $obj) {
+        foreach($answer as $obj){
             $p = new Product($obj->id);
             $p->setName($obj->name);
             $p->setImage($obj->image);
             $p->setPrice($obj->price);
-            $p->setDescription($obj->description);
+            $p->setDescription($answer->description);
             $p->setIdcategory($obj->category);
             array_push($res, $p);
         }
-
+       
         return $res;
     }
 
-    public function findAllByCategory($category): array
-    {
-        $requete = $this->cnx->prepare("select * from Product where category= :category");
-        $requete->bindParam(':category', $category);
-        $requete->execute();
-        $answer = $requete->fetchAll(PDO::FETCH_OBJ);
-
-        $res = [];
-        foreach ($answer as $obj) {
-            $p = new Product($obj->id);
-            $p->setName($obj->name);
-            $p->setImage($obj->image);
-            $p->setPrice($obj->price);
-            $p->setDescription($obj->description);
-            $p->setIdcategory($obj->category);
-            array_push($res, $p);
-        }
-        return $res;
-    }
-
-
-
-    public function save($product)
-    {
+    public function save($product){
         $requete = $this->cnx->prepare("insert into Product (name, category) values (:name, :idcategory)");
         $name = $product->getName();
-        $price = $product->getPrice();
-        $description = $product->getDescription();
-        $image = $product->getImage();
-
         $idcat = $product->getIdcategory();
-        $requete->bindParam(':name', $name);
+        $requete->bindParam(':name', $name );
         $requete->bindParam(':idcategory', $idcat);
-
         $answer = $requete->execute(); // an insert query returns true or false. $answer is a boolean.
 
-        if ($answer) {
+        if ($answer){
             $id = $this->cnx->lastInsertId(); // retrieve the id of the last insert query
             $product->setId($id); // set the product id to its real value.
             return true;
         }
-
+          
         return false;
     }
 
-    public function delete($id)
-    {
+    public function delete($id){
         // Not implemented ! TODO when needed !
         return false;
     }
 
-    public function update($product)
-    {
+    public function update($product){
         // Not implemented ! TODO when needed !
         return false;
     }
+
+   
+    
 }

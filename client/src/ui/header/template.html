@@ -1,10 +1,66 @@
 <header class="bg-white text-black border-b border-black/10">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="h-16 flex items-center justify-between">
-      <a href="/products" data-link class="flex items-center justify-center flex-1 md:flex-none">
+
+      <input id="nav-toggle" type="checkbox" class="peer hidden">
+
+      <label for="nav-toggle" class="p-2 -ml-2 md:hidden cursor-pointer">
+        <img src="/assets/images/icons/burger.svg" alt="Ouvrir le menu" class="h-6 w-6 peer-checked:hidden">
+        <img src="/assets/images/icons/close.svg"  alt="Fermer le menu" class="h-6 w-6 hidden peer-checked:block">
+      </label>
+
+      <a href="/" class="flex items-center justify-center flex-1 md:flex-none">
         <img src="/assets/images/brands/logo.svg" alt="Galeries Lafayette" class="h-7 w-auto">
       </a>
+
+      <div class="w-8 md:hidden"></div>
+
+      <nav class="hidden md:block flex-1">
+        <ul class="flex justify-center gap-14 lg:gap-24 tracking-[0.08em] text-sm font-medium">
+          <li><a href="/products" data-link class="inline-block px-1 pb-3 border-b-2 border-black">PRODUITS</a></li>
+          <li><a href="/category/1" data-link class="inline-block px-1 pb-3 border-b-2 border-transparent hover:border-black">VÊTEMENTS</a></li>
+          <li><a href="/category/2" data-link class="inline-block px-1 pb-3 border-b-2 border-transparent hover:border-black">CHAUSSURES</a></li>
+          <li><a href="/category/3" data-link class="inline-block px-1 pb-3 border-b-2 border-transparent hover:border-black">ACCESSOIRES</a></li>
+        </ul>
+      </nav>
     </div>
   </div>
-</header>
 
+  <div class="md:hidden">
+    <label for="nav-toggle"
+           class="fixed inset-0 z-40 hidden peer-checked:block bg-black/20"></label>
+
+    <nav class="fixed left-0 top-0 z-50 h-full w-80 max-w-[85vw] bg-white shadow-xl border-r border-black
+                -translate-x-full peer-checked:translate-x-0 transition-transform duration-200">
+      <div class="p-6 pt-20">
+        <ul class="space-y-8 tracking-[0.08em] text-base font-medium">
+          <li>
+            <a href="/products" class="flex items-center justify-between">
+              <span>PRODUITS</span>
+              <img src="/assets/images/icons/chevron-right.svg" alt="Voir" class="h-4 w-4">
+            </a>
+            <span class="block mt-2 w-12 h-[2px] bg-black"></span>
+          </li>
+          <li>
+            <a href="/category/1" data-link class="flex items-center justify-between">
+              <span>VÊTEMENTS</span>
+              <img src="/assets/images/icons/chevron-right.svg" alt="Voir" class="h-4 w-4">
+            </a>
+          </li>
+          <li>
+            <a href="/category/2" data-link class="flex items-center justify-between">
+              <span>CHAUSSURES</span>
+              <img src="/assets/images/icons/chevron-right.svg" alt="Voir" class="h-4 w-4">
+            </a>
+          </li>
+          <li>
+            <a href="/category/3" data-link class="flex items-center justify-between">
+              <span>ACCESSOIRES</span>
+              <img src="/assets/images/icons/chevron-right.svg" alt="Voir" class="h-4 w-4">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
