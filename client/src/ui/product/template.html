@@ -1,11 +1,22 @@
-<article class="overflow-hidden rounded-lg bg-white p-6 shadow-md transition hover:shadow-lg">
-  <span class="mb-2 block text-sm font-medium text-gray-500">ID: {{id}}</span>
-  <h3 class="mb-4 text-xl font-bold text-gray-900">{{name}}</h3>
-  <a href="/products/{{id}}/{{name}}" data-link>Voir le détail</a>
-  <button 
-    data-buy="{{id}}" 
-    class="w-full rounded-lg bg-green-600 px-4 py-2 text-white transition hover:bg-green-700"
-  >
-    Ajouter au panier
-  </button>
+<article>
+  <a href="/products/{{id}}/{{name}}" data-link class="block">
+    <figure>
+      <img
+        src="/assets/images/products/{{image}}"
+        alt="{{name}}"
+        class="w-full aspect-[4/5] object-cover bg-white"
+      >
+      <figcaption class="p-4">
+        <p class="font-display text-base font-bold tracking-wide text-text uppercase">
+          {{name}}
+        </p>
+        <p class="mt-1 text-base font-body text-description">
+          {{description}}
+        </p>
+        <p class="mt-4 text-base font-body font-bold text-text">
+          {{price}} €
+        </p>
+      </figcaption>
+    </figure>
+  </a>
 </article>

@@ -3,9 +3,8 @@
 @font-face{
   font-family:"GL Bader Compress";
   src:url("../assets/font/GL-Bader-Compress-Black.ttf") format("ttf");
-  /* font-weight: 400 700;
   font-style: normal;
-  font-display: swap; */
+  font-display: swap;
 }
 
 @import "tailwindcss";
@@ -17,8 +16,8 @@
 @theme inline {
   --color-bg: var(--clr-bg);
   --color-text: var(--clr-black);
-  --color-muted: var(--clr-gray-500);
-  --color-brand: var(--clr-purple);
+  --color-description: var(--clr-gray);
+  --color-notif: var(--clr-purple);
   --color-warning: var(--clr-amber);
   --color-error: var(--clr-red);
 
@@ -47,8 +46,8 @@
   :root {
     --clr-white: #ffffff;
     --clr-black: #171717; /* noir utilisé pour titres/texte + btn primaire */
-    --clr-gray-500: #737373; /* gris pour descriptions */
-    --clr-purple: #5d2de6; /* brand/accent */
+    --clr-gray: #737373; /* gris pour descriptions */
+    --clr-purple: #5d2de6; /* notif */
     --clr-amber: #f59e0b; /* warning */
     --clr-red: #dc2626; /* error */
 
