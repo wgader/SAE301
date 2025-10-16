@@ -223,6 +223,7 @@ class Router {
       });
     }
   }
+
   
   // Se connecter et rediriger vers la page demandée
   login() {
@@ -245,3 +246,5 @@ class Router {
 }
 
 export { Router };
+
+

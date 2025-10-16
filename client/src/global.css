@@ -54,5 +54,7 @@
     --clr-bg: var(--clr-white);
     --radius-30: 30px;
   }
+
+  .active { border-color: var(--clr-black) !important; }
 }
 
