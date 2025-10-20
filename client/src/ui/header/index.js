@@ -33,7 +33,6 @@ let HeaderView = {
       };
     }
     
-    // Indicateur simple avec classe
     const path = window.location.pathname;
     const links = fragment.querySelectorAll('a[data-link]');
     links.forEach(link => link.classList.remove('active'));
