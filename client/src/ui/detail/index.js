@@ -9,12 +9,10 @@ let DetailView = {
   dom: function (data) {
     let fragment = htmlToFragment(DetailView.html(data));
     
-    // Galerie d'images (version simple pour étudiants)
     const main = fragment.querySelector('#p-main');
     const thumbsContainer = fragment.querySelector('#p-thumbs');
     const dotsContainer = fragment.querySelector('#p-dots');
 
-    // Prépare le tableau d'images (compatibilité images[] ou image)
     var images = ['default.png'];
     if (data && data.images && Array.isArray(data.images) && data.images.length) {
       images = data.images;
@@ -22,13 +20,11 @@ let DetailView = {
       images = [data.image];
     }
 
-    // Définit l'image principale
     if (main && data && data.id) {
       main.src = '/assets/images/products/' + data.id + '/' + images[0];
       main.alt = data.name || '';
     }
 
-    // Génère les miniatures (desktop)
     if (thumbsContainer) {
       thumbsContainer.innerHTML = '';
       for (var i = 0; i < images.length; i++) {

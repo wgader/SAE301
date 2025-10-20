@@ -45,6 +45,7 @@ class ProductRepository extends EntityRepository
         $p->setPrice($answer->price);
         $p->setDescription($answer->description);
         $p->setIdcategory($answer->category);
+        $p->setDetails($answer->details);
         // Récupérer les images associées dans la table Gallery
         $imgsReq = $this->cnx->prepare("select filename from Gallery where product_id = :pid order by id");
         $imgsReq->bindParam(':pid', $answer->id);
@@ -71,6 +72,7 @@ class ProductRepository extends EntityRepository
             $p->setPrice($obj->price);
             $p->setDescription($obj->description);
             $p->setIdcategory($obj->category);
+            $p->setDetails($obj->details);
             // charger images
             $imgsReq = $this->cnx->prepare("select filename from Gallery where product_id = :pid order by id");
             $imgsReq->bindParam(':pid', $obj->id);
@@ -101,6 +103,7 @@ class ProductRepository extends EntityRepository
             $p->setPrice($obj->price);
             $p->setDescription($obj->description);
             $p->setIdcategory($obj->category);
+            $p->setDetails($obj->details);
             // charger images
             $imgsReq = $this->cnx->prepare("select filename from Gallery where product_id = :pid order by id");
             $imgsReq->bindParam(':pid', $obj->id);

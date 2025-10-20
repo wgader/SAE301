@@ -17,6 +17,8 @@ class Product extends Entity {
     private ?int $idcategory = null; // id de la catégorie du produit (nullable)
     private ?float $price = null;
     private ?string $description = null;
+    private ?string $details = null;
+
     /**
      * images : tableau de noms de fichiers (gallery)
      */
@@ -64,7 +66,8 @@ class Product extends Entity {
             "category" => $this->idcategory,
             "price" => $this->price,
             "description" => $this->description,
-            "images" => $this->images
+            "images" => $this->images,
+            "details" => $this->details,
         ];
     }
 
@@ -78,6 +81,10 @@ class Product extends Entity {
 
     public function getPrice() : ?float{
         return $this->price;
+    }
+
+    public function getDetails() : ?string{
+        return $this->details;
     }
 
     /**
@@ -158,8 +165,16 @@ class Product extends Entity {
         return $this;
     }
 
-    public function setDescription ($description){
+    public function setDescription (string $description){
         $this->description = $description;
         return $this;
     }
+
+    public function setDetails (string $details): self
+    {
+        $this->details = $details;
+        return $this;
+    }
+
+
 }
