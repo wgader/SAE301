@@ -1,0 +1,41 @@
+<main class="mx-auto w-full max-w-[360px] px-3 pt-3 pb-10 md:max-w-[420px] md:px-4 font-body text-text">
+  <h1 class="font-display leading-tight text-4xl md:text-5xl">Connexion</h1>
+
+  <nav class="mt-2">
+    <a href="/signup" data-link class="inline-flex items-center gap-2 underline text-sm md:text-base">
+      Vous n’avez pas de compte ?
+      <img src="/assets/images/icons/chevron-right.svg" alt="" class="h-4 w-4" />
+    </a>
+  </nav>
+
+  <form action="#" method="post" class="mt-6">
+    <div class="space-y-1.5">
+      <label for="login-email" class="block text-sm text-description">Email</label>
+      <input id="login-email" name="email" type="email" inputmode="email" autocomplete="email"
+        class="w-full box-border border border-text/20 px-3 py-[10px]
+               h-[44px] text-[15px] leading-[22px] font-body
+               rounded-none outline-none appearance-none
+               placeholder:text-description focus:border-text" />
+    </div>
+
+    <div class="mt-4 space-y-1.5">
+      <label for="login-pass" class="block text-sm text-description">Mot de passe</label>
+      <input id="login-pass" name="password" type="password" autocomplete="current-password"
+        class="w-full box-border border border-text/20 px-3 py-[10px]
+               h-[44px] text-[15px] leading-[22px] font-body
+               rounded-none outline-none appearance-none
+               placeholder:text-description focus:border-text" />
+    </div>
+
+    <nav class="mt-3">
+      <a href="/forgot-password" data-link class="underline text-sm">Mot de passe oublié ?</a>
+    </nav>
+
+    <p class="mt-5">
+      <button type="submit"
+        class="w-full rounded-[var(--radius-btn)] bg-btn-primary-bg px-5 py-3 text-center font-display tracking-wide uppercase text-btn-primary-fg text-base cursor-pointer md:text-[17px]">
+        Continuer
+      </button>
+    </p>
+  </form>
+</main>

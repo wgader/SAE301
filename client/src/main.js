@@ -7,6 +7,8 @@ import { ProductDetailPage } from "./pages/productDetail/page.js";
 
 import { RootLayout } from "./layouts/root/layout.js";
 import { The404Page } from "./pages/404/page.js";
+import { SignUpPage } from "./pages/signup/page.js";
+import { SignInPage } from "./pages/signin/page.js";
 
 // Exemple d'utilisation avec authentification 
 
@@ -20,6 +22,8 @@ router.addRoute("/about", AboutPage);
 router.addRoute("/products", ProductsPage);
 router.addRoute("/category/:id", ProductsPage);
 router.addRoute("/products/:id/:slug", ProductDetailPage);
+router.addRoute("/signin", SignInPage);
+router.addRoute("/signup",SignUpPage);
 
 router.addRoute("*", The404Page);
 

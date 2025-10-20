@@ -12,7 +12,6 @@ let HeaderView = {
   dom: function () {
     let fragment = htmlToFragment(template);
     
-    
     // Menu burger
     const btn = fragment.querySelector('#navBtn');
     const drawer = fragment.querySelector('#drawer');
@@ -32,7 +31,7 @@ let HeaderView = {
         iconClose.classList.add('hidden');
       };
     }
-    
+       
     const path = window.location.pathname;
     const links = fragment.querySelectorAll('a[data-link]');
     links.forEach(link => link.classList.remove('active'));
