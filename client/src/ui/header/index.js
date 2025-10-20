@@ -17,10 +17,20 @@ let HeaderView = {
     const btn = fragment.querySelector('#navBtn');
     const drawer = fragment.querySelector('#drawer');
     const backdrop = fragment.querySelector('#backdrop');
+    const iconOpen = fragment.querySelector('#iconOpen');
+    const iconClose = fragment.querySelector('#iconClose');
     
     if (btn && drawer && backdrop) {
-      btn.onclick = () => drawer.classList.toggle('hidden');
-      backdrop.onclick = () => drawer.classList.add('hidden');
+      btn.onclick = () => {
+        drawer.classList.toggle('hidden');
+        iconOpen.classList.toggle('hidden');
+        iconClose.classList.toggle('hidden');
+      };
+      backdrop.onclick = () => {
+        drawer.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      };
     }
     
     // Indicateur simple avec classe

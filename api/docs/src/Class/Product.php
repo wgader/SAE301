@@ -14,9 +14,12 @@ require_once ('Entity.php');
 class Product extends Entity {
     private int $id; // id du produit
     private ?string $name = null; // nom du produit (nullable pour éviter erreur si non initialisé)
-    private ?int $idcategory = null; // id de la catégorie du produit (nullable)
+    private ?int $idcategory = null; // id de la catégorie du produit 
     private ?float $price = null;
-    private ?string $image = null;
+    /**
+     * images : tableau de noms de fichiers (gallery)
+     */
+    private array $images = [];
 
     public function __construct(int $id){
         $this->id = $id;
@@ -59,7 +62,7 @@ class Product extends Entity {
             "name" => $this->name,
             "category" => $this->idcategory,
             "price" => $this->price,
-            "image" => $this->image
+            "images" => $this->images
         ];
     }
 
@@ -75,8 +78,11 @@ class Product extends Entity {
         return $this->price;
     }
 
-    public function getImage() : ?string{
-        return $this->image;
+    /**
+     * Retourne le tableau d'images (noms de fichier)
+     */
+    public function getImages() : array{
+        return $this->images;
     }
 
     /**
@@ -135,8 +141,11 @@ class Product extends Entity {
      *
      * @return  self
      */ 
-    public function setImage (string $path){
-        $this->image = $path;
+    /**
+     * Remplace le tableau d'images
+     */
+    public function setImages (array $images){
+        $this->images = $images;
         return $this;
     }
 }

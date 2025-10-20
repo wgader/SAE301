@@ -11,12 +11,52 @@ let DetailView = {
     
     // Galerie d'images
     const main = fragment.querySelector('#p-main');
-    const thumbs = fragment.querySelectorAll('[data-thumb]');
-    const dots = fragment.querySelectorAll('[data-dot]');
+    const thumbsContainer = fragment.querySelector('#p-thumbs');
+    const dotsContainer = fragment.querySelector('#p-dots');
+    let thumbs = [];
+    let dots = [];
+
+    const images = (data.images && Array.isArray(data.images) && data.images.length) ? data.images : [data.image || 'default.png'];
+
+    // build thumbs
+    if (thumbsContainer) {
+      thumbsContainer.innerHTML = '';
+      images.forEach((img, idx) => {
+        const li = document.createElement('li');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.setAttribute('data-thumb', '');
+        btn.setAttribute('data-src', `/assets/images/products/${data.id}/${img}`);
+        btn.className = idx === 0 ? 'block overflow-hidden border-2 border-black' : 'block overflow-hidden border border-gray-200';
+        const imgel = document.createElement('img');
+        imgel.src = `/assets/images/products/${data.id}/${img}`;
+        imgel.alt = data.name || '';
+        imgel.className = 'w-full aspect-[4/5] object-cover';
+        btn.appendChild(imgel);
+        li.appendChild(btn);
+        thumbsContainer.appendChild(li);
+      });
+      thumbs = Array.from(thumbsContainer.querySelectorAll('[data-thumb]'));
+    }
+
+    // build dots
+    if (dotsContainer) {
+      dotsContainer.innerHTML = '';
+      images.forEach((img, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.setAttribute('data-dot', '');
+        btn.className = 'h-2 w-2 rounded-full bg-black';
+        btn.style.opacity = idx === 0 ? '1' : '.3';
+        dotsContainer.appendChild(btn);
+      });
+      dots = Array.from(dotsContainer.querySelectorAll('[data-dot]'));
+    }
 
     if (main && thumbs.length) {
       function setActive(i) {
-        main.src = thumbs[i].getAttribute('data-src');
+        const src = thumbs[i].getAttribute('data-src');
+        if (src) main.src = src;
         thumbs.forEach((thumb, k) => {
           const active = (k === i);
           thumb.classList.toggle('border-2', active);

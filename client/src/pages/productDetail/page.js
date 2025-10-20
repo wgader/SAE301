@@ -31,7 +31,10 @@ C.init = async function(params) {
     
     let p = M.getProductById(productId);
     console.log("Product loaded:", p);
-    
+    if (p) {
+        p.image = (p.images && Array.isArray(p.images) && p.images.length) ? p.images[0] : (p.image || 'default.png');
+    }
+
     return V.init(p);
 }
 

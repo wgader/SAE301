@@ -42,10 +42,19 @@ class ProductRepository extends EntityRepository
 
         $p = new Product($answer->id);
         $p->setName($answer->name);
-        $p->setImage($answer->image);
         $p->setPrice($answer->price);
         $p->setDescription($answer->description);
         $p->setIdcategory($answer->category);
+        // Récupérer les images associées dans la table Gallery
+        $imgsReq = $this->cnx->prepare("select filename from Gallery where product_id = :pid order by id");
+        $imgsReq->bindParam(':pid', $answer->id);
+        $imgsReq->execute();
+        $imgs = $imgsReq->fetchAll(PDO::FETCH_OBJ);
+        $filenames = [];
+        foreach ($imgs as $img) {
+            $filenames[] = $img->filename;
+        }
+        $p->setImages($filenames);
         return $p;
     }
 
@@ -59,10 +68,19 @@ class ProductRepository extends EntityRepository
         foreach ($answer as $obj) {
             $p = new Product($obj->id);
             $p->setName($obj->name);
-            $p->setImage($obj->image);
             $p->setPrice($obj->price);
             $p->setDescription($obj->description);
             $p->setIdcategory($obj->category);
+            // charger images
+            $imgsReq = $this->cnx->prepare("select filename from Gallery where product_id = :pid order by id");
+            $imgsReq->bindParam(':pid', $obj->id);
+            $imgsReq->execute();
+            $imgs = $imgsReq->fetchAll(PDO::FETCH_OBJ);
+            $filenames = [];
+            foreach ($imgs as $img) {
+                $filenames[] = $img->filename;
+            }
+            $p->setImages($filenames);
             array_push($res, $p);
         }
 
@@ -80,10 +98,19 @@ class ProductRepository extends EntityRepository
         foreach ($answer as $obj) {
             $p = new Product($obj->id);
             $p->setName($obj->name);
-            $p->setImage($obj->image);
             $p->setPrice($obj->price);
             $p->setDescription($obj->description);
             $p->setIdcategory($obj->category);
+            // charger images
+            $imgsReq = $this->cnx->prepare("select filename from Gallery where product_id = :pid order by id");
+            $imgsReq->bindParam(':pid', $obj->id);
+            $imgsReq->execute();
+            $imgs = $imgsReq->fetchAll(PDO::FETCH_OBJ);
+            $filenames = [];
+            foreach ($imgs as $img) {
+                $filenames[] = $img->filename;
+            }
+            $p->setImages($filenames);
             array_push($res, $p);
         }
         return $res;
@@ -97,7 +124,8 @@ class ProductRepository extends EntityRepository
         $name = $product->getName();
         $price = $product->getPrice();
         $description = $product->getDescription();
-        $image = $product->getImage();
+    // images are stored separately in Gallery; saving product does not handle images here
+    $images = [];
 
         $idcat = $product->getIdcategory();
         $requete->bindParam(':name', $name);
