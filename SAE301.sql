@@ -24,6 +24,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `User`
+--
+
+CREATE TABLE `User` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(256) NOT NULL,
+  `lastname` varchar(256) NOT NULL,
+  `civ` varchar(10) NOT NULL,
+  `email` varchar(256) NOT NULL UNIQUE,
+  `password_hash` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `User`
+--
+
+INSERT INTO `User` (`firstname`, `lastname`, `civ`, `email`, `password_hash`) VALUES
+('Jean', 'Dupont', 'monsieur', 'jean@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `Category`
 --
 
@@ -96,6 +118,12 @@ INSERT INTO `Product` (`id`, `name`, `category`) VALUES
 --
 
 --
+-- Index pour la table `User`
+--
+ALTER TABLE `User`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `Category`
 --
 ALTER TABLE `Category`
@@ -111,6 +139,12 @@ ALTER TABLE `Product`
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
+
+--
+-- AUTO_INCREMENT pour la table `User`
+--
+ALTER TABLE `User`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `Category`

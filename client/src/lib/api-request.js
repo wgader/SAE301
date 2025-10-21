@@ -4,7 +4,7 @@
  */
 
 
-let API_URL = "http://mmi.unilim.fr/~gader3/SAE301/api/";
+let API_URL = "https://mmi.unilim.fr/~gader3/SAE301/api/";
 
 
 /**
@@ -25,7 +25,8 @@ let API_URL = "http://mmi.unilim.fr/~gader3/SAE301/api/";
 let getRequest = async function(uri){
 
     let options = {
-        method: "GET"
+        method: "GET",
+        credentials: 'include'
     };
 
     try{
@@ -57,29 +58,32 @@ let getRequest = async function(uri){
  */
 
 let postRequest = async function(uri, data){
-    // Défition des options de la requêtes
     let options = {
-        credentials: 'include', // inclure les cookies dans la requête
+        credentials: 'include',
         method: 'POST',
-        header: {
-            Content_Type: 'multipart/form-data' // type de données envoyées (nécessaire si upload fichier)
+        header : {
+            'Content-Type': 'multipart/form-data'
         },
         body: data
     }
 
     try{
-        var response = await fetch(API_URL+uri, options); // exécution (asynchrone) de la requête et attente de la réponse
+        var response = await fetch(API_URL+uri, options);
     }
     catch(e){
-        console.error("Echec de la requête : " + e); // affichage de l'erreur dans la console
+        console.error("Echec de la requête : " + e);
         return false;
     }
+    
+    let $obj = await response.json();
+    
+    // Si erreur (status 400, 401, 500, etc.), retourner l'objet avec l'erreur
     if (response.status != 200){
-        console.error("Erreur de requête : " + response.status); // affichage de l'erreur dans la console
-        return false; // si le serveur a renvoyé une erreur, on retourne false
+        console.error("Erreur de requête : " + response.status, $obj);
+        return $obj; // Retourne l'objet avec {error: "message"}
     }
-    let $obj = await response.json(); // extraction du json retourné par le serveur (opération asynchrone aussi)
-    return $obj; // et on retourne le tout (response.json() a déjà converti le json en objet Javscript)
+    
+    return $obj;
 }
 
 
@@ -95,7 +99,24 @@ let postRequest = async function(uri, data){
  *  La fonction retourne true ou false selon le succès de l'opération
  */
 let deleteRequest = async function(uri){
-   // Pas implémenté. TODO if needed.
+    let options = {
+        method: "DELETE",
+        credentials: 'include'
+    };
+
+    try{
+        var response = await fetch(API_URL+uri, options);
+    }
+    catch(e){
+        console.error("Echec de la requête : "+e);
+        return false;
+    }
+    if (response.status != 200){
+        console.error("Erreur de requête : " + response.status);
+        return false;
+    }
+    let $obj = await response.json();
+    return $obj;
 }
 
 
@@ -115,4 +136,5 @@ let patchRequest = async function(uri, data){
 }
 
 
-export {getRequest, postRequest }
+export {getRequest, postRequest, deleteRequest }
+

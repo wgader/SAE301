@@ -30,8 +30,8 @@
   --color-btn-secondary-st: var(--clr-black);
 
   /* Typos */
-  --font-display:"GL Bader Compress",sans-serif;
-  --font-body:"Roboto Condensed",sans-serif;
+  --font-display:var(--font-gl-bader);
+  --font-body:var(--font-roboto);
 
   /* Radius */
   --radius-btn: var(--radius-30);
@@ -51,10 +51,21 @@
     --clr-amber: #f59e0b; /* warning */
     --clr-red: #dc2626; /* error */
 
+    --font-roboto: 'Roboto Condensed', sans-serif;
+    --font-gl-bader: 'GL Bader Compress', sans-serif;
+
     --clr-bg: var(--clr-white);
     --radius-30: 30px;
   }
 
   .active { border-color: var(--clr-black) !important; }
+
+  .bullets {
+    @apply block overflow-hidden border-2 border-black;
+  }
+
+  .bullets-grey {
+    @apply block overflow-hidden border border-gray-200;
+  }
 }
 

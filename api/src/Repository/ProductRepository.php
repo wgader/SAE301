@@ -47,6 +47,7 @@ class ProductRepository extends EntityRepository
         $p->setIdcategory($answer->category);
         $p->setDetails($answer->details);
         // Récupérer les images associées dans la table Gallery
+        
         $imgsReq = $this->cnx->prepare("select filename from Gallery where product_id = :pid order by id");
         $imgsReq->bindParam(':pid', $answer->id);
         $imgsReq->execute();

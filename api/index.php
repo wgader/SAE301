@@ -2,7 +2,20 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
+// Configuration des cookies de session pour cross-domain
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'domain' => '',
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'None'
+]);
+
 require_once "src/Controller/ProductController.php";
+require_once "src/Controller/UserController.php";
+require_once "src/Controller/AuthController.php";
 require_once "src/Class/HttpRequest.php";
 
 
@@ -28,8 +41,12 @@ require_once "src/Class/HttpRequest.php";
  *  On ajoutera des "routes" à $router si l'on a d'autres ressource à traiter.
  */
 $router = [
-    "products" => new ProductController()
+    "products" => new ProductController(),
+    "users" => new UserController(),
+    "auth" => new AuthController(),
 ];
+
+
 
 
 
