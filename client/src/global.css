@@ -90,7 +90,9 @@
     --input-height: 2.75rem;  /* 44px */
   }
 
-  .active { border-color: var(--clr-black) !important; }
+  .active { 
+    @apply border-color-black !important;
+  }
 
   .bullets {
     @apply block overflow-hidden border-2 border-black;
@@ -102,21 +104,20 @@
 
   /* Classes pour validation de mot de passe */
   .password-rule-valid {
-    color: var(--color-success);
+    @apply text-success ;
   }
 
   .password-rule-invalid {
-    color: var(--color-description);
+    @apply text-description
   }
 
   /* Classes pour les icônes d'œil (toggle password) */
   .eye-icon {
-    height: 1.25rem;
-    width: 1.25rem;
+    @apply w-[1.25rem] h-[1.25rem];
   }
 
   .eye-icon.hidden {
-    display: none;
+    @apply hidden;
   }
 }
 

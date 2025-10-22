@@ -33,7 +33,7 @@ let DetailView = {
         var btn = document.createElement('button');
         btn.type = 'button';
         btn.setAttribute('data-src', '/assets/images/products/' + data.id + '/' + file);
-        btn.className = (i === 0) ? 'block overflow-hidden border-2 border-black' : 'block overflow-hidden border border-gray-200';
+        btn.className = (i === 0) ? 'bullets' : 'bullets-grey';
         var imgEl = document.createElement('img');
         imgEl.src = '/assets/images/products/' + data.id + '/' + file;
         imgEl.alt = data.name || '';
@@ -48,9 +48,9 @@ let DetailView = {
             var all = thumbsContainer.querySelectorAll('button');
             for (var k = 0; k < all.length; k++) {
               if (k === index) {
-                all[k].className = 'block overflow-hidden border-2 border-black';
+                all[k].className = 'bullets';
               } else {
-                all[k].className = 'block overflow-hidden border border-gray-200';
+                all[k].className = 'bullets-grey';
               }
             }
             // mettre à jour les dots
@@ -84,9 +84,9 @@ let DetailView = {
               var all = thumbsContainer.querySelectorAll('button');
               for (var k = 0; k < all.length; k++) {
                 if (k === idx) {
-                  all[k].className = 'block overflow-hidden border-2 border-black';
+                  all[k].className = 'bullets';
                 } else {
-                  all[k].className = 'block overflow-hidden border border-gray-200';
+                  all[k].className = 'bullets-grey';
                 }
               }
             }
