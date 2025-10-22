@@ -7,13 +7,13 @@ let V = {};
 V.render = function(user) {
   let html = template.replace('{{name}}', user.firstname);
   const frag = htmlToFragment(html);
-  
+
   const logoutBtn = frag.querySelector('#logout-btn');
-  logoutBtn.onclick = async () => {
+  
+  logoutBtn.addEventListener('click', async () => {
     await AuthData.logout();
     window.location.href = '/signin';
-  };
-  
+  });
   return frag;
 };
 

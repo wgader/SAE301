@@ -27,6 +27,11 @@
     <div class="mt-5 space-y-1.5">
       <label for="sn-lastname" class="block text-sm text-description">Nom</label>
       <input id="sn-lastname" name="lastname" type="text" autocomplete="family-name"
+        required
+        minlength="2"
+        maxlength="50"
+        pattern="[A-Za-zÀ-ÿ\s\-']+"
+        title="Le nom doit contenir uniquement des lettres"
         class="w-full box-border border border-text/20 px-3 py-[10px]
                h-[44px] text-[15px] leading-[22px] font-body
                rounded-none outline-none appearance-none
@@ -36,6 +41,11 @@
     <div class="mt-4 space-y-1.5">
       <label for="sn-firstname" class="block text-sm text-description">Prénom</label>
       <input id="sn-firstname" name="firstname" type="text" autocomplete="given-name"
+        required
+        minlength="2"
+        maxlength="50"
+        pattern="[A-Za-zÀ-ÿ\s\-']+"
+        title="Le prénom doit contenir uniquement des lettres"
         class="w-full box-border border border-text/20 px-3 py-[10px]
                h-[44px] text-[15px] leading-[22px] font-body
                rounded-none outline-none appearance-none
@@ -45,6 +55,9 @@
     <div class="mt-4 space-y-1.5">
       <label for="sn-email" class="block text-sm text-description">Email</label>
       <input id="sn-email" name="email" type="email" inputmode="email" autocomplete="email"
+        required
+        pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+        title="Veuillez entrer une adresse email valide"
         class="w-full box-border border border-text/20 px-3 py-[10px]
                h-[44px] text-[15px] leading-[22px] font-body
                rounded-none outline-none appearance-none
@@ -53,19 +66,44 @@
 
     <div class="mt-4 space-y-1.5">
       <label for="sn-pass" class="block text-sm text-description">Mot de passe</label>
-      <input id="sn-pass" name="password" type="password" autocomplete="new-password"
-        class="w-full box-border border border-text/20 px-3 py-[10px]
-               h-[44px] text-xl leading-[22px] font-body
-               rounded-none outline-none appearance-none
-               placeholder:text-description focus:border-text" />
+      <div class="relative">
+        <input id="sn-pass" name="password" type="password" autocomplete="new-password"
+          required
+          minlength="12"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?&quot;:{}|&lt;&gt;]).{12,}$"
+          title="Le mot de passe doit contenir au moins 12 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial"
+          class="w-full box-border border border-text/20 px-3 py-[10px] pr-12
+                 h-[44px] text-[15px] leading-[22px] font-body
+                 rounded-none outline-none appearance-none
+                 placeholder:text-description focus:border-text" />
+        <button type="button" id="toggle-password" class="absolute right-3 top-1/2 -translate-y-1/2 text-description hover:text-text transition-colors">
+          <img id="eye-closed" src="/assets/images/icons/eye-closed.svg" alt="Masquer le mot de passe" class="h-5 w-5" />
+          <img id="eye-open" src="/assets/images/icons/eye-open.svg" alt="Afficher le mot de passe" class="h-5 w-5 hidden" />
+        </button>
+      </div>
     </div>
 
     <ul class="mt-3 grid grid-cols-1 gap-2 text-[13px] text-description md:grid-cols-2">
-      <li class="inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-text"></span>12&nbsp;caractères minimum</li>
-      <li class="inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-text"></span>Un caractère en majuscule</li>
-      <li class="inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-text"></span>Un caractère en minuscule</li>
-      <li class="inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-text"></span>Un caractère spécial</li>
-      <li class="inline-flex items-center gap-2 md:col-span-2"><span class="h-1.5 w-1.5 rounded-full bg-text"></span>Un chiffre</li>
+      <li id="rule-length" class="inline-flex items-center gap-2">
+        <img src="/assets/images/icons/check-circle.svg" alt="" class="h-4 w-4 flex-shrink-0" />
+        12&nbsp;caractères minimum
+      </li>
+      <li id="rule-uppercase" class="inline-flex items-center gap-2">
+        <img src="/assets/images/icons/check-circle.svg" alt="" class="h-4 w-4 flex-shrink-0" />
+        Un caractère en majuscule
+      </li>
+      <li id="rule-lowercase" class="inline-flex items-center gap-2">
+        <img src="/assets/images/icons/check-circle.svg" alt="" class="h-4 w-4 flex-shrink-0" />
+        Un caractère en minuscule
+      </li>
+      <li id="rule-special" class="inline-flex items-center gap-2">
+        <img src="/assets/images/icons/check-circle.svg" alt="" class="h-4 w-4 flex-shrink-0" />
+        Un caractère spécial
+      </li>
+      <li id="rule-number" class="inline-flex items-center gap-2 md:col-span-2">
+        <img src="/assets/images/icons/check-circle.svg" alt="" class="h-4 w-4 flex-shrink-0" />
+        Un chiffre
+      </li>
     </ul>
 
     <p class="mt-5">

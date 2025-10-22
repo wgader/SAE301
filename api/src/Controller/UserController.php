@@ -54,11 +54,19 @@ class UserController extends EntityController {
      * @return mixed Le User créé avec son ID, ou false en cas d'erreur
      */
     protected function processPostRequest(HttpRequest $request) {
-        $firstname = $request->getParam('firstname');
-        $lastname = $request->getParam('lastname');
-        $email = $request->getParam('email');
-        $password = $request->getParam('password');
-        $civ = $request->getParam('civ');
+        $json = $request->getJson();
+        $data = json_decode($json);
+        
+        if (!$data) {
+            http_response_code(400);
+            return ['error' => 'Données JSON invalides'];
+        }
+        
+        $firstname = $data->firstname ?? null;
+        $lastname = $data->lastname ?? null;
+        $email = $data->email ?? null;
+        $password = $data->password ?? null;
+        $civ = $data->civ ?? null;
 
         if (!$firstname || !$lastname || !$email || !$password || !$civ) {
             http_response_code(400);

@@ -24,13 +24,21 @@ class AuthController extends EntityController {
      * @return mixed Données utilisateur si succès, false sinon
      */
     protected function processPostRequest(HttpRequest $request) {
-        $email = $request->getParam('email');
-        $password = $request->getParam('password');
+        $json = $request->getJson();
+        $data = json_decode($json);
         
-        if (!$email || !$password) {
+        if(empty($data)) {
+            http_response_code(400);
+            return ['error' => 'Données JSON invalides'];
+        }
+
+        if (!$data || !isset($data->email) || !isset($data->password)) {
             http_response_code(400);
             return ['error' => 'Email et mot de passe requis'];
         }
+        
+        $email = $data->email;
+        $password = $data->password;
         
         $user = $this->repository->findByEmail($email);
         

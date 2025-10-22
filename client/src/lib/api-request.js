@@ -57,12 +57,12 @@ let getRequest = async function(uri){
  *  La fonction retourne les données après conversion en objet Javascript (ou false si la requête a échoué)
  */
 
-let postRequest = async function(uri, data){
+let postRequest = async function(uri, data){ 
     let options = {
         credentials: 'include',
         method: 'POST',
-        header : {
-            'Content-Type': 'multipart/form-data'
+        headers : {
+            'Content-Type': 'application/json'
         },
         body: data
     }
@@ -86,7 +86,34 @@ let postRequest = async function(uri, data){
     return $obj;
 }
 
+let jsonPostRequest = async function(uri, data){ 
+    let options = {
+        credentials: 'include',
+        method: 'POST',
+        headers : {
+            'Content-Type': 'application/json'
+        },
+        body: data
+    }
 
+    try{
+        var response = await fetch(API_URL+uri, options);
+    }
+    catch(e){
+        console.error("Echec de la requête : " + e);
+        return false;
+    }
+    
+    let $obj = await response.json();
+    
+    // Si erreur (status 400, 401, 500, etc.), retourner l'objet avec l'erreur
+    if (response.status != 200){
+        console.error("Erreur de requête : " + response.status, $obj);
+        return $obj; // Retourne l'objet avec {error: "message"}
+    }
+    
+    return $obj;
+}
 
 /**
  *  deleteRequest
@@ -136,5 +163,5 @@ let patchRequest = async function(uri, data){
 }
 
 
-export {getRequest, postRequest, deleteRequest }
+export {getRequest, postRequest, deleteRequest, jsonPostRequest }
 

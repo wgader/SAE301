@@ -1,30 +1,25 @@
-import { postRequest, getRequest, deleteRequest } from "../lib/api-request.js";
+import { postRequest, getRequest, deleteRequest, jsonPostRequest } from "../lib/api-request.js";
 
-const AuthData = {
-  async login(email, password) {
-    const formData = new FormData();
-    formData.append('email', email);
-    formData.append('password', password);
-    return await postRequest('auth', formData);
-  },
+let AuthData = {};
 
-  async signup(firstname, lastname, civ, email, password) {
-    const formData = new FormData();
-    formData.append('firstname', firstname);
-    formData.append('lastname', lastname);
-    formData.append('civ', civ);
-    formData.append('email', email);
-    formData.append('password', password);
-    return await postRequest('users', formData);
-  },
+AuthData.login = async function (userInfo) {
+  const response = await postRequest('auth', JSON.stringify(userInfo));
+  console.log("Login response:", response);
+  return response;
+}
 
-  async getCurrentUser() {
-    return await getRequest('auth');
-  },
+AuthData.signup = async function (userInfo) {
+  const response = await jsonPostRequest('users', JSON.stringify(userInfo));
+  console.log("Signup response:", response);
+  return response;
+}
 
-  async logout() {
-    return await deleteRequest('auth');
-  }
+AuthData.getCurrentUser = async function () {
+  return await getRequest('auth');
+};
+
+AuthData.logout = async function () {
+  return await deleteRequest('auth');
 };
 
 export { AuthData };

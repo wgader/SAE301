@@ -20,6 +20,7 @@
   --color-notif: var(--clr-purple);
   --color-warning: var(--clr-amber);
   --color-error: var(--clr-red);
+  --color-success: var(--clr-green);
 
   /* Boutons */
   --color-btn-primary-bg: var(--clr-black);
@@ -48,6 +49,7 @@
     --clr-black: #171717; /* noir utilisé pour titres/texte + btn primaire */
     --clr-gray: #737373; /* gris pour descriptions */
     --clr-purple: #5d2de6; /* notif */
+    --clr-green: #16a34a; /* success */
     --clr-amber: #f59e0b; /* warning */
     --clr-red: #dc2626; /* error */
 
