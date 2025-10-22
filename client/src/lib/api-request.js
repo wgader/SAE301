@@ -61,11 +61,13 @@ let postRequest = async function(uri, data){
     let options = {
         credentials: 'include',
         method: 'POST',
-        headers : {
-            'Content-Type': 'application/json'
+        header : {
+            'Content-Type': 'multipart/form-data'
         },
         body: data
     }
+
+
 
     try{
         var response = await fetch(API_URL+uri, options);
@@ -88,9 +90,8 @@ let postRequest = async function(uri, data){
 
 let jsonPostRequest = async function(uri, data){ 
     let options = {
-        credentials: 'include',
         method: 'POST',
-        headers : {
+        header : {
             'Content-Type': 'application/json'
         },
         body: data

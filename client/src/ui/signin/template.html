@@ -1,4 +1,4 @@
-<main class="mx-auto w-full max-w-[360px] px-3 pt-3 pb-10 md:max-w-[420px] md:px-4 font-body text-text">
+<main class="mx-auto w-full max-w-[22.5rem] px-3 pt-3 pb-10 md:max-w-[26.25rem] md:px-4 font-body text-text">
   <h1 class="font-display leading-tight text-4xl md:text-5xl">Connexion</h1>
 
   <nav class="mt-2">
@@ -17,8 +17,8 @@
       <label for="login-email" class="block text-sm text-description">Email</label>
       <input id="login-email" name="email" type="email" inputmode="email" autocomplete="email" required
         pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" title="Veuillez entrer une adresse email valide"
-        class="w-full box-border border border-text/20 px-3 py-[10px]
-               h-[44px] text-[15px] leading-[22px] font-body
+        class="w-full box-border border border-text/20 px-3 py-[0.625rem]
+               h-11 text-base leading-[1.375rem] font-body
                rounded-none outline-none appearance-none
                placeholder:text-description focus:border-text" />
     </div>
@@ -27,14 +27,14 @@
       <label for="login-pass" class="block text-sm text-description">Mot de passe</label>
       <div class="relative">
         <input id="login-pass" name="password" type="password" autocomplete="current-password" required minlength="12"
-          title="Le mot de passe doit contenir au moins 12 caractères" class="w-full box-border border border-text/20 px-3 py-[10px] pr-12
-                 h-[44px] text-[15px] leading-[22px] font-body
+          title="Le mot de passe doit contenir au moins 12 caractères" class="w-full box-border border border-text/20 px-3 py-[0.625rem] pr-12
+                 h-11 text-base leading-[1.375rem] font-body
                  rounded-none outline-none appearance-none
                  placeholder:text-description focus:border-text" />
         <button type="button" id="toggle-password"
           class="absolute right-3 top-1/2 -translate-y-1/2 text-description hover:text-text transition-colors">
-          <img id="eye-closed" src="/assets/images/icons/eye-closed.svg" alt="Masquer le mot de passe" class="h-5 w-5" />
-          <img id="eye-open" src="/assets/images/icons/eye-open.svg" alt="Afficher le mot de passe" class="h-5 w-5 hidden" />
+          <img id="eye-closed" src="/assets/images/icons/eye-closed.svg" alt="Masquer le mot de passe" class="eye-icon" />
+          <img id="eye-open" src="/assets/images/icons/eye-open.svg" alt="Afficher le mot de passe" class="eye-icon hidden" />
         </button>
       </div>
     </div>
@@ -45,7 +45,7 @@
 
     <p class="mt-5">
       <button type="submit"
-        class="w-full rounded-[var(--radius-btn)] bg-btn-primary-bg px-5 py-3 text-center font-display tracking-wide uppercase text-btn-primary-fg text-base cursor-pointer md:text-[17px]">
+        class="w-full rounded-[var(--radius-btn)] bg-btn-primary-bg px-5 py-3 text-center font-display tracking-wide uppercase text-btn-primary-fg text-base cursor-pointer md:text-lg">
         Continuer
       </button>
     </p>

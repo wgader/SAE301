@@ -78,47 +78,47 @@ C.handlePasswordInput = function(e) {
   
   // Longueur
   if (password.length >= 12) {
-    length.classList.add('text-green-600');
-    length.classList.remove('text-description');
+    length.classList.add('password-rule-valid');
+    length.classList.remove('password-rule-invalid');
   } else {
-    length.classList.remove('text-green-600');
-    length.classList.add('text-description');
+    length.classList.remove('password-rule-valid');
+    length.classList.add('password-rule-invalid');
   }
   
   // Majuscule
   if (/[A-Z]/.test(password)) {
-    uppercase.classList.add('text-green-600');
-    uppercase.classList.remove('text-description');
+    uppercase.classList.add('password-rule-valid');
+    uppercase.classList.remove('password-rule-invalid');
   } else {
-    uppercase.classList.remove('text-green-600');
-    uppercase.classList.add('text-description');
+    uppercase.classList.remove('password-rule-valid');
+    uppercase.classList.add('password-rule-invalid');
   }
   
   // Minuscule
   if (/[a-z]/.test(password)) {
-    lowercase.classList.add('text-green-600');
-    lowercase.classList.remove('text-description');
+    lowercase.classList.add('password-rule-valid');
+    lowercase.classList.remove('password-rule-invalid');
   } else {
-    lowercase.classList.remove('text-green-600');
-    lowercase.classList.add('text-description');
+    lowercase.classList.remove('password-rule-valid');
+    lowercase.classList.add('password-rule-invalid');
   }
   
   // Chiffre
   if (/[0-9]/.test(password)) {
-    number.classList.add('text-green-600');
-    number.classList.remove('text-description');
+    number.classList.add('password-rule-valid');
+    number.classList.remove('password-rule-invalid');
   } else {
-    number.classList.remove('text-green-600');
-    number.classList.add('text-description');
+    number.classList.remove('password-rule-valid');
+    number.classList.add('password-rule-invalid');
   }
   
   // Spécial
   if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-    special.classList.add('text-green-600');
-    special.classList.remove('text-description');
+    special.classList.add('password-rule-valid');
+    special.classList.remove('password-rule-invalid');
   } else {
-    special.classList.remove('text-green-600');
-    special.classList.add('text-description');
+    special.classList.remove('password-rule-valid');
+    special.classList.add('password-rule-invalid');
   }
 };
 

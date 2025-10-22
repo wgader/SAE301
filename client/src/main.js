@@ -14,11 +14,13 @@ import { SignInPage } from "./pages/signin/page.js";
 
 const router = new Router('app', { loginPath: '/signin' });
 
-// Vérifier si user connecté via la session AVANT de démarrer le router
 (async () => {
   const result = await AuthData.getCurrentUser();
   if (result && result.authenticated) {
     router.setAuth(true);
+  }
+  else {
+    router.setAuth(false);
   }
   
   // Configurer les routes
@@ -33,7 +35,6 @@ const router = new Router('app', { loginPath: '/signin' });
   router.addRoute("/signin", SignInPage, { useLayout: false });
   router.addRoute("/signup", SignUpPage, { useLayout: false });
   router.addRoute("/profile", ProfilePage, { requireAuth: true });
-
   router.addRoute("*", The404Page);
 
   router.start();
