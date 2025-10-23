@@ -23,7 +23,7 @@ C.handleFormSubmit = async function (e) {
   const result = await AuthData.login(data);
   
   if (result && result.success) {
-    window.location.href = "/profile";
+    window.location.href = "/my-account/dashboard";
   } else if (result && result.error) {
     errorDiv.textContent = result.error;
     errorDiv.classList.remove("hidden");
@@ -56,14 +56,19 @@ V.attachEvents = function(page) {
   const form = page.querySelector('form');
   const toggleButton = page.querySelector('#toggle-password');
   
-  form.addEventListener('submit', C.handleFormSubmit);
-  toggleButton.addEventListener('click', C.togglePassword);
+  if (form) {
+    form.addEventListener('submit', C.handleFormSubmit);
+  }
+  if (toggleButton) {
+    toggleButton.addEventListener('click', C.togglePassword);
+  }
 };
 
 V.init = function () {
   const page = htmlToFragment(template);
   const comp = SignInView.dom();
   page.querySelector('slot[name="form"]').replaceWith(comp);
+  // Important: attacher les événements APRÈS avoir remplacé le slot
   V.attachEvents(page);
   return page;
 };

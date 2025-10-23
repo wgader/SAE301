@@ -4,13 +4,14 @@ import { AboutPage } from "./pages/about/page.js";
 import { HomePage } from "./pages/home/page.js";
 import { ProductsPage } from "./pages/products/page.js";
 import { ProductDetailPage } from "./pages/productDetail/page.js";
-import { ProfilePage } from "./pages/profile/page.js";
+import { DashboardPage } from "./pages/dashboard/page.js";
 import { AuthData } from "./data/auth.js";
 
 import { RootLayout } from "./layouts/root/layout.js";
 import { The404Page } from "./pages/404/page.js";
 import { SignUpPage } from "./pages/signup/page.js";
 import { SignInPage } from "./pages/signin/page.js";
+import { ProfilePage } from "./pages/profile/page.js";
 
 const router = new Router('app', { loginPath: '/signin' });
 
@@ -34,7 +35,9 @@ const router = new Router('app', { loginPath: '/signin' });
   router.addRoute("/products/:id/:slug", ProductDetailPage);
   router.addRoute("/signin", SignInPage, { useLayout: false });
   router.addRoute("/signup", SignUpPage, { useLayout: false });
-  router.addRoute("/profile", ProfilePage, { requireAuth: true });
+  router.addRoute("/my-account/dashboard", DashboardPage, { requireAuth: true });
+  router.addRoute("/my-account/orders", DashboardPage, { requireAuth: true });
+  router.addRoute("/my-account/profile", ProfilePage, { requireAuth: true });
   router.addRoute("*", The404Page);
 
   router.start();

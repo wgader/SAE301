@@ -157,12 +157,36 @@ let deleteRequest = async function(uri){
  *  Pour modifier la ressource, on fournit les données utiles via le paramètre data.
  *  Par exemple : patchRequest("http://.../products/3", {category:1} ) pour modifier la catégorie du produit d'identifiant 3
  * 
- *  La fonction retourne true ou false selon le succès de l'opération
+ *  La fonction retourne l'objet de réponse ou false si échec
  */
 let patchRequest = async function(uri, data){
-   // Pas implémenté. TODO if needed.
+    let options = {
+        method: 'PATCH',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+
+    try{
+        var response = await fetch(API_URL+uri, options);
+    }
+    catch(e){
+        console.error("Echec de la requête : " + e);
+        return false;
+    }
+    
+    let $obj = await response.json();
+    
+    // Si erreur (status 400, 401, 500, etc.), retourner l'objet avec l'erreur
+    if (response.status != 200){
+        console.error("Erreur de requête : " + response.status, $obj);
+        return $obj; // Retourne l'objet avec {error: "message"}
+    }
+    
+    return $obj;
 }
 
 
-export {getRequest, postRequest, deleteRequest, jsonPostRequest }
-
+export {getRequest, postRequest, deleteRequest, jsonPostRequest, patchRequest }

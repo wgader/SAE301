@@ -1,0 +1,144 @@
+<section class="mx-auto w-full max-w-[72rem] font-body text-text">
+    <header class="mb-6">
+        <h1 class="font-display leading-tight text-3xl md:text-5xl">Vos informations personnelles</h1>
+        <p class="text-description text-sm mt-2">Les champs marqués d’un astérisque (*) sont obligatoires</p>
+    </header>
+
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+
+        <!-- FORM INFOS (gauche) -->
+        <form id="form-profile-info" action="#" method="post" class="border border-black/20 p-4 md:p-6 h-full">
+            <h2 class="font-display text-xl mb-4">Informations de base</h2>
+
+            <!-- Civilité -->
+            <section class="mb-6">
+                <p class="block text-sm text-description mb-2">Civilité *</p>
+                <ul class="flex items-center gap-5">
+                    <li>
+                        <label class="inline-flex items-center gap-2">
+                            <input type="radio" name="civ" value="madame"
+                                class="h-4 w-4 border-text/30 text-text focus:ring-0">
+                            <span>Madame</span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="inline-flex items-center gap-2">
+                            <input type="radio" name="civ" value="monsieur" checked
+                                class="h-4 w-4 border-text/30 text-text focus:ring-0">
+                            <span>Monsieur</span>
+                        </label>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Nom -->
+            <label for="lastname" class="block text-sm text-description mb-2">Nom *</label>
+            <input id="lastname" name="lastname" type="text" autocomplete="family-name" required
+                class="w-full mb-4 box-border border border-text/20 px-3 py-[0.625rem] h-11 text-base rounded-none outline-none focus:border-text">
+
+            <!-- Prénom -->
+            <label for="firstname" class="block text-sm text-description mb-2">Prénom *</label>
+            <input id="firstname" name="firstname" type="text" autocomplete="given-name" required
+                class="w-full mb-4 box-border border border-text/20 px-3 py-[0.625rem] h-11 text-base rounded-none outline-none focus:border-text">
+
+            <!-- Email -->
+            <label for="email" class="block text-sm text-description mb-2">Email *</label>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required
+                class="w-full mb-6 box-border border border-text/20 px-3 py-[0.625rem] h-11 text-base rounded-none outline-none focus:border-text">
+
+            <!-- Button infos -->
+            <section class="flex items-center gap-3 pt-2">
+                <button type="submit"
+                    class="px-6 py-2 md:px-10 md:py-3 font-display uppercase bg-black text-white rounded-[var(--radius-btn)] cursor-pointer">
+                    Modifier
+                </button>
+                <a href="/my-account/dashboard" data-link
+                    class="px-6 py-2 md:px-10 md:py-3 font-display uppercase border border-black text-black rounded-[var(--radius-btn)] cursor-pointer">
+                    Annuler
+                </a>
+            </section>
+        </form>
+
+        <!-- FORM MDP (droite) -->
+        <form id="form-profile-password" action="#" method="post" class="border border-black/20 p-4 md:p-6 h-full">
+            <h2 class="font-display text-xl mb-4">Sécurité</h2>
+
+            <!-- Mot de passe actuel -->
+            <label for="current_password" class="block text-sm text-description mb-2">Mot de passe actuel *</label>
+            <section class="relative mb-6">
+                <input id="current_password" name="current_password" type="password" autocomplete="current-password"
+                    required minlength="12"
+                    class="w-full box-border border border-text/20 px-3 py-[0.625rem] pr-12 h-11 text-base rounded-none outline-none focus:border-text">
+                <button id="toggle-current-password" type="button"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-description hover:text-text cursor-pointer"
+                    aria-label="Afficher/masquer le mot de passe actuel">
+                    <img src="/assets/images/icons/eye-closed.svg" alt="Afficher le mot de passe" class="eye-icon">
+                    <img src="/assets/images/icons/eye-open.svg" alt="Masquer le mot de passe" class="eye-icon hidden">
+                </button>
+            </section>
+
+            <!-- Nouveau mot de passe -->
+            <label for="new-password" class="block text-sm text-description mb-2">Nouveau mot de passe *</label>
+            <section class="relative">
+                <input id="new-password" name="new_password" type="password" autocomplete="new-password" required
+                    minlength="12"
+                    class="w-full box-border border border-text/20 px-3 py-[0.625rem] pr-12 h-11 text-base rounded-none outline-none focus:border-text">
+                <button id="toggle-new-password" type="button"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-description hover:text-text cursor-pointer"
+                    aria-label="Afficher/masquer le nouveau mot de passe">
+                    <img src="/assets/images/icons/eye-closed.svg" alt="Afficher le mot de passe" class="eye-icon">
+                    <img src="/assets/images/icons/eye-open.svg" alt="Masquer le mot de passe" class="eye-icon hidden">
+                </button>
+            </section>
+
+            <ul class="mt-3 grid grid-cols-1 gap-2 text-xs md:grid-cols-2">
+                <li id="rule-length" class="inline-flex items-center gap-2 password-rule-invalid">
+                    <img src="/assets/images/icons/check-circle.svg" alt="" class="h-4 w-4 flex-shrink-0" />
+                    12&nbsp;caractères minimum
+                </li>
+                <li id="rule-uppercase" class="inline-flex items-center gap-2 password-rule-invalid">
+                    <img src="/assets/images/icons/check-circle.svg" alt="" class="h-4 w-4 flex-shrink-0" />
+                    Un caractère en majuscule
+                </li>
+                <li id="rule-lowercase" class="inline-flex items-center gap-2 password-rule-invalid">
+                    <img src="/assets/images/icons/check-circle.svg" alt="" class="h-4 w-4 flex-shrink-0" />
+                    Un caractère en minuscule
+                </li>
+                <li id="rule-special" class="inline-flex items-center gap-2 password-rule-invalid">
+                    <img src="/assets/images/icons/check-circle.svg" alt="" class="h-4 w-4 flex-shrink-0" />
+                    Un caractère spécial
+                </li>
+                <li id="rule-number" class="inline-flex items-center gap-2 md:col-span-2 password-rule-invalid">
+                    <img src="/assets/images/icons/check-circle.svg" alt="" class="h-4 w-4 flex-shrink-0" />
+                    Un chiffre
+                </li>
+            </ul>
+
+            <!-- Bouton dédié au MDP -->
+            <section class="mt-6">
+                <button type="submit"
+                    class="px-6 py-2 md:px-10 md:py-3 font-display uppercase bg-black text-white rounded-[var(--radius-btn)] cursor-pointer">
+                    Modifier le mot de passe
+                </button>
+            </section>
+        </form>
+    </section>
+
+    <!-- SUPPRESSION COMPTE -->
+    <article class="mt-6 border border-black/20 bg-white">
+        <header class="px-4 pt-4">
+            <h3 class="text-sm text-description">Suppression de votre compte</h3>
+        </header>
+        <section class="px-4 py-6 md:px-6">
+            <p class="text-[var(--color-warning)] text-sm md:text-base">
+                Vous perdrez vos données personnelles ainsi que votre compte fidélité et les avantages associés
+            </p>
+            <footer class="mt-5">
+                <button id="delete-account" type="button"
+                    class="px-6 py-2 md:px-10 md:py-3 font-display uppercase bg-white text-black border border-black rounded-[var(--radius-btn)] cursor-pointer">
+                    Supprimer votre compte
+                </button>
+            </footer>
+        </section>
+    </article>
+</section>

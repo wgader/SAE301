@@ -1,0 +1,20 @@
+<main class="px-4 md:px-6 lg:px-8 py-6">
+  <a href="/products" data-link class="inline-flex items-center gap-2 text-sm mb-6">
+    <img src="/assets/images/icons/chevron-right.svg" alt="Retour" class="h-4 w-4 rotate-180">
+    <span class="hidden md:inline">Retour</span>
+  </a>
+
+  <header class="mb-8">
+    <h1 class="font-display text-3xl md:text-5xl">Bonjour {{name}}</h1>
+  </header>
+
+  <!-- ICI on insère les cartes du dashboard via page.js -->
+  <slot name="dashboard-cards"></slot>
+
+  <footer class="mt-10">
+    <button id="logout-btn"
+      class="px-6 py-2 md:px-10 md:py-3 font-display uppercase border border-black rounded-[var(--radius-btn)] cursor-pointer">
+      Se déconnecter
+    </button>
+  </footer>
+</main>

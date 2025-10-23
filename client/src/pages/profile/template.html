@@ -1,5 +1,10 @@
-<div class="px-4 md:px-6 lg:px-8 py-6">
-  <h1 class="text-2xl font-display mb-4">Bonjour {{name}}</h1>
+<main class="px-4 py-4 md:px-6 lg:px-8">
+  <nav class="inline-flex items-center gap-2 text-sm mb-6">
+    <a href="/my-account/dashboard" data-link class="inline-flex items-center gap-2">
+      <img src="/assets/images/icons/chevron-right.svg" alt="Retour" class="h-4 w-4 rotate-180" />
+      <span class="hidden md:inline">Retour</span>
+    </a>
+  </nav>
 
-  <button id="logout-btn" class="mt-4 px-6 py-2 font-display uppercase bg-black rounded-btn text-white cursor-pointer">Se déconnecter</button>
-</div>
+  <slot name="form"></slot>
+</main>

@@ -91,7 +91,7 @@
   }
 
   .active { 
-    @apply border-color-black !important;
+    @apply border-[var(--color-black)];
   }
 
   .bullets {
@@ -104,20 +104,29 @@
 
   /* Classes pour validation de mot de passe */
   .password-rule-valid {
-    @apply text-success ;
+    color: var(--color-success);
+  }
+  
+  .password-rule-valid img {
+    filter: invert(45%) sepia(96%) saturate(445%) hue-rotate(75deg) brightness(96%) contrast(91%);
   }
 
   .password-rule-invalid {
-    @apply text-description
+    color: var(--color-description);
+  }
+  
+  .password-rule-invalid img {
+    filter: invert(55%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%);
   }
 
   /* Classes pour les icônes d'œil (toggle password) */
   .eye-icon {
-    @apply w-[1.25rem] h-[1.25rem];
+    width: 1.25rem;
+    height: 1.25rem;
   }
 
   .eye-icon.hidden {
-    @apply hidden;
+    display: none;
   }
 }
 
