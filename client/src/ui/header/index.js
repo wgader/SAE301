@@ -1,4 +1,5 @@
 import { htmlToFragment } from "../../lib/utils.js";
+import { CartData } from "../../data/cart.js";
 import template from "./template.html?raw";
 
 let HeaderView = {
@@ -43,7 +44,26 @@ let HeaderView = {
       fragment.querySelector('a[href="/category/3"]').classList.add('active');
     }
     
+    // Mettre à jour le badge panier
+    HeaderView.updateCartBadge(fragment);
+    
     return fragment;
+  },
+  
+  updateCartBadge: function(fragment = document) {
+    const badge = fragment.querySelector('#cart-badge');
+    if (!badge) return;
+    
+    const count = CartData.getItemCount();
+    badge.textContent = count;
+    
+    if (count > 0) {
+      badge.classList.remove('hidden');
+      badge.classList.add('flex');
+    } else {
+      badge.classList.add('hidden');
+      badge.classList.remove('flex');
+    }
   }
 };
 

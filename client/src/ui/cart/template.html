@@ -1,0 +1,42 @@
+<!-- Grille principale : liste (gauche) + récap (droite) -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6 font-body text-text">
+  <!-- Liste articles -->
+  <section class="lg:col-span-2 space-y-6">
+    <ul id="cart-list" class="space-y-6">
+      <!-- items injectés -->
+      <slot name="items"></slot>
+    </ul>
+  </section>
+
+  <!-- Récapitulatif -->
+  <aside class="lg:col-span-1">
+    <section class="border border-black/20 p-4 md:p-6">
+      <h2 class="font-display text-2xl mb-4">Récapitulatif</h2>
+
+      <dl class="space-y-3 text-sm">
+        <div class="flex items-center justify-between">
+          <dt>Total commande ({{itemsCount}} {{itemsCountLabel}})</dt>
+          <dd>{{subtotal}} €</dd>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <dt>Frais de livraison estimés</dt>
+          <dd>{{shippingLabel}}</dd>
+        </div>
+
+        <hr class="border-black/10 my-4">
+
+        <div class="flex items-center justify-between font-semibold">
+          <dt>Total à payer</dt>
+          <dd>{{total}} €</dd>
+        </div>
+      </dl>
+
+      <a href="/checkout" data-link
+         class="mt-6 inline-flex w-full items-center justify-center px-6 py-3 font-display uppercase
+                bg-black text-white rounded-[var(--radius-btn)]">
+        Continuer
+      </a>
+    </section>
+  </aside>
+</section>

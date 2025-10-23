@@ -1,0 +1,45 @@
+<li>
+  <article class="border border-black/20">
+    <section class="p-4 md:p-6 grid grid-cols-[96px_1fr_auto] md:grid-cols-[120px_1fr_auto] gap-4 md:gap-6 items-start">
+      <!-- Image produit -->
+      <figure class="w-24 md:w-30">
+        <img src="/assets/images/products/{{id}}/{{image}}" alt="{{name}}" class="w-full h-auto object-cover">
+      </figure>
+
+      <!-- Infos -->
+      <section class="space-y-2 pl-5">
+        <h3 class="font-display text-base md:text-lg">{{name}}</h3>
+        <p class="text-sm text-description">{{description}}</p>
+        <p class="text-xs text-description">Prix unitaire : <span class="font-medium">{{unitPrice}} €</span></p>
+      </section>
+
+      <!-- Supprimer -->
+      <section>
+        <button type="button" data-remove="{{id}}"
+                class="rounded-full border border-black/30 w-8 h-8 inline-flex items-center justify-center cursor-pointer">
+          <img src="/assets/images/icons/trash.svg" alt="Supprimer l'article" class="h-4 w-4">
+        </button>
+      </section>
+    </section>
+
+    <!-- Quantité + Total ligne -->
+    <footer class="px-4 md:px-6 pb-4 md:pb-6 flex items-center justify-between">
+      <section>
+        <p class="text-xs text-description mb-2">Quantité</p>
+        <label class="relative inline-flex">
+          <select name="qty" data-qty="{{id}}"
+                  class="appearance-none border border-text/20 px-3 pr-8 py-2 text-sm rounded-none cursor-pointer">
+            <option{{q1}}>1</option>
+            <option{{q2}}>2</option>
+            <option{{q3}}>3</option>
+            <option{{q4}}>4</option>
+            <option{{q5}}>5</option>
+          </select>
+          <img src="/assets/images/icons/chevron-down.svg" alt="Ouvrir le menu" class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4">
+        </label>
+      </section>
+
+      <p class="font-medium">{{lineTotal}} €</p>
+    </footer>
+  </article>
+</li>

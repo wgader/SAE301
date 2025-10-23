@@ -1,4 +1,6 @@
 import { ProductData } from "../../data/product.js";
+import { CartData } from "../../data/cart.js";
+import { HeaderView } from "../../ui/header/index.js";
 import { ProductView } from "../../ui/product/index.js";
 import { htmlToFragment } from "../../lib/utils.js";
 import template from "./template.html?raw";
@@ -10,9 +12,36 @@ let M = {
 let C = {};
 
 C.handler_clickOnProduct = function (ev) {
-  if (ev.target.dataset.buy !== undefined) {
-    let id = ev.target.dataset.buy;
-    alert(`Le produit d'identifiant ${id} ? Excellent choix !`);
+  const buyBtn = ev.target.closest('[data-buy]');
+  
+  if (buyBtn && buyBtn.dataset.buy !== undefined) {
+    let id = parseInt(buyBtn.dataset.buy);
+    const product = M.products.find(p => p.id === id);
+    
+    if (product) {
+      const added = CartData.addItem({
+        id: product.id,
+        name: product.name,
+        description: product.description || product.descriptionShort,
+        image: product.image,
+        price: product.price
+      });
+      
+      if (added) {
+        // Mettre à jour le badge
+        HeaderView.updateCartBadge(document);
+        
+        // Notification visuelle
+        const originalHTML = buyBtn.innerHTML;
+        buyBtn.innerHTML = '✓';
+        buyBtn.disabled = true;
+        
+        setTimeout(() => {
+          buyBtn.innerHTML = originalHTML;
+          buyBtn.disabled = false;
+        }, 2000);
+      }
+    }
   }
 };
 
@@ -36,6 +65,7 @@ V.init = function (data) {
 V.createPageFragment = function (data) {
   // Créer le fragment depuis le template
   let pageFragment = htmlToFragment(template);
+  console.log("Creating page fragment with data:", data);
 
   const count = pageFragment.querySelector('#nbrproduct');
   count.textContent = `${data.length} produit${data.length > 1 ? 's' : ''}`;

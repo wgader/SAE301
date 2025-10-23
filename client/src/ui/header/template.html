@@ -15,18 +15,28 @@
       <!-- Nav desktop -->
       <nav class="hidden md:block flex-1">
         <ul class="flex justify-center gap-12 text-sm font-medium tracking-wide">
-          <li><a href="/products"   data-link class="pb-3 border-b-2 border-transparent hover:border-black px-1">PRODUITS</a></li>
-          <li><a href="/category/1" data-link class="pb-3 border-b-2 border-transparent hover:border-black px-1">VÊTEMENTS</a></li>
-          <li><a href="/category/2" data-link class="pb-3 border-b-2 border-transparent hover:border-black px-1">CHAUSSURES</a></li>
-          <li><a href="/category/3" data-link class="pb-3 border-b-2 border-transparent hover:border-black px-1">ACCESSOIRES</a></li>
+          <li><a href="/products"   data-link class="pb-5 border-b-2 border-transparent hover:border-black transition-colors duration-300 px-1">PRODUITS</a></li>
+          <li><a href="/category/1" data-link class="pb-5 border-b-2 border-transparent hover:border-black transition-colors duration-300 px-1">VÊTEMENTS</a></li>
+          <li><a href="/category/2" data-link class="pb-5 border-b-2 border-transparent hover:border-black transition-colors duration-300 px-1">CHAUSSURES</a></li>
+          <li><a href="/category/3" data-link class="pb-5 border-b-2 border-transparent hover:border-black transition-colors duration-300 px-1">ACCESSOIRES</a></li>
         </ul>
       </nav>
 
       <div class="w-8 md:hidden"></div>
 
-      <a href="/my-account/dashboard" data-link>
-        <img src="/assets/images/icons/profile.svg" alt="Mon compte" class="h-auto">
-      </a>
+      <!-- Actions : Panier + Profil -->
+      <div class="flex items-center gap-10">
+        <!-- Panier avec badge -->
+        <a href="/cart" data-link class="relative">
+          <img src="/assets/images/icons/shopping-bag.svg" alt="Mon panier" class="h-6 w-6">
+          <span id="cart-badge" class="absolute -top-2 -right-2 bg-notif text-white text-xs font-semibold rounded-full h-5 w-5 items-center justify-center hidden">0</span>
+        </a>
+
+        <!-- Profil -->
+        <a href="/my-account/dashboard" data-link>
+          <img src="/assets/images/icons/profile.svg" alt="Mon compte" class="h-6 w-6">
+        </a>
+      </div>
 
     </div>
   </div>

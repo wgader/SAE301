@@ -5,6 +5,7 @@ import { HomePage } from "./pages/home/page.js";
 import { ProductsPage } from "./pages/products/page.js";
 import { ProductDetailPage } from "./pages/productDetail/page.js";
 import { DashboardPage } from "./pages/dashboard/page.js";
+import { CartPage } from "./pages/cart/page.js";
 import { AuthData } from "./data/auth.js";
 
 import { RootLayout } from "./layouts/root/layout.js";
@@ -33,6 +34,7 @@ const router = new Router('app', { loginPath: '/signin' });
   router.addRoute("/products", ProductsPage);
   router.addRoute("/category/:id", ProductsPage);
   router.addRoute("/products/:id/:slug", ProductDetailPage);
+  router.addRoute("/cart", CartPage);
   router.addRoute("/signin", SignInPage, { useLayout: false });
   router.addRoute("/signup", SignUpPage, { useLayout: false });
   router.addRoute("/my-account/dashboard", DashboardPage, { requireAuth: true });

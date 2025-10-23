@@ -1,4 +1,6 @@
 import { ProductData } from "../../data/product.js";
+import { CartData } from "../../data/cart.js";
+import { HeaderView } from "../../ui/header/index.js";
 import { htmlToFragment } from "../../lib/utils.js";
 import { DetailView } from "../../ui/detail/index.js";
 import template from "./template.html?raw";
@@ -17,8 +19,34 @@ let C = {};
 
 C.handler_clickOnProduct = function(ev){
     if (ev.target.dataset.buy!==undefined){
-        let id = ev.target.dataset.buy;
-        alert(`Produit ajouté au panier ! (Quand il y en aura un)`);
+        let id = parseInt(ev.target.dataset.buy);
+        const product = M.getProductById(id);
+        
+        if (product) {
+            const added = CartData.addItem({
+                id: product.id,
+                name: product.name,
+                description: product.description || product.descriptionShort,
+                image: product.image,
+                price: product.price
+            });
+            
+            if (added) {
+                // Mettre à jour le badge
+                HeaderView.updateCartBadge(document);
+                
+                // Notification visuelle
+                const btn = ev.target;
+                const originalText = btn.textContent;
+                btn.textContent = '✓ Ajouté au panier';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }, 2000);
+            }
+        }
     }
 }
 
