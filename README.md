@@ -3,6 +3,7 @@
 **Étudiant :** Wahel Gader  
 **Itération :** 7  
 **Site choisi :** Galeries Lafayette
+
 **Port dev local :** 5175
 
 ---
