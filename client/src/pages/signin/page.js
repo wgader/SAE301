@@ -10,7 +10,12 @@ C.handleFormSubmit = async function (e) {
   e.stopPropagation();
 
   const form = e.target;
-  const errorDiv = form.querySelector("#error-message"); 
+  const errorDiv = form.querySelector("#error-message");
+  
+  if (!errorDiv) {
+    return;
+  }
+  
   errorDiv.classList.add("hidden");
   errorDiv.textContent = "";
   
@@ -23,7 +28,7 @@ C.handleFormSubmit = async function (e) {
   const result = await AuthData.login(data);
   
   if (result && result.success) {
-    window.location.href = "/my-account/dashboard";
+    window.location.href = "/";
   } else if (result && result.error) {
     errorDiv.textContent = result.error;
     errorDiv.classList.remove("hidden");
