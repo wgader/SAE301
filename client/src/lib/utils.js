@@ -11,7 +11,7 @@
 let genericRenderer = function(template, data){
     let html = template;
     for(let key in data){
-        html = html.replaceAll(new RegExp("{{"+key+"}}", "g"), data[key]);
+        html = html.replaceAll("{{"+key+"}}", data[key]);
     }
     return html;
 }

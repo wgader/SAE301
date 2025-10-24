@@ -1,6 +1,6 @@
 import { CartData } from "../../data/cart.js";
 import { HeaderView } from "../../ui/header/index.js";
-import { htmlToFragment } from "../../lib/utils.js";
+import { htmlToFragment, genericRenderer } from "../../lib/utils.js";
 import template from "./template.html?raw";
 import emptyTemplate from "../../ui/cart/empty.template.html?raw";
 import cartTemplate from "../../ui/cart/template.html?raw";
@@ -83,19 +83,16 @@ V.init = function() {
  * Crée le contenu du panier (liste + récap)
  */
 V.createCartContent = function() {
-    let html = cartTemplate;
-    
-    // Remplacer les placeholders du récapitulatif
     const itemsCount = M.cart.itemCount;
     const itemsCountLabel = itemsCount > 1 ? 'articles' : 'article';
-    const shippingLabel = M.cart.shipping === 0 ? 'Gratuite' : `${M.cart.shipping} €`;
     
-    html = html.replace('{{itemsCount}}', itemsCount);
-    html = html.replace('{{itemsCountLabel}}', itemsCountLabel);
-    html = html.replace('{{subtotal}}', M.cart.subtotal.toFixed(2));
-    html = html.replace('{{shippingLabel}}', shippingLabel);
-    html = html.replace('{{total}}', M.cart.total.toFixed(2));
+    const data = {
+        'itemsCount': itemsCount,
+        'itemsCountLabel': itemsCountLabel,
+        'total': M.cart.total.toFixed(2)
+    };
     
+    let html = genericRenderer(cartTemplate, data);
     const fragment = htmlToFragment(html);
     
     // Injecter les articles

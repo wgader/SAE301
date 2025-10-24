@@ -1,0 +1,29 @@
+<article class="border border-black/20 p-6 mb-8 text-left">
+  <h2 class="font-display text-xl mb-4">Détails</h2>
+  
+  <section class="mb-2 text-sm">
+    <p class="flex justify-between py-2">
+      <span>Numéro</span>
+      <span class="font-semibold">{{order-number}}</span>
+    </p>
+    <p class="flex justify-between py-2">
+      <span>Date</span>
+      <span class="font-semibold">{{order-date}}</span>
+    </p>
+    <p class="flex justify-between py-2">
+      <span>Statut</span>
+      <span class="font-semibold">{{order-status}}</span>
+    </p>
+    <p class="flex justify-between py-2">
+      <span>Total</span>
+      <span class="font-semibold">{{order-total}} €</span>
+    </p>
+  </section>
+
+  <section class="mt-6">
+    <h3 class="font-display text-lg mb-3">Articles</h3>
+    <section id="order-items">
+      <!-- slot -->
+    </section>
+  </section>
+</article>

@@ -13,24 +13,17 @@
     <section class="border border-black/20 p-4 md:p-6">
       <h2 class="font-display text-2xl mb-4">Récapitulatif</h2>
 
-      <dl class="space-y-3 text-sm">
-        <div class="flex items-center justify-between">
-          <dt>Total commande ({{itemsCount}} {{itemsCountLabel}})</dt>
-          <dd>{{subtotal}} €</dd>
-        </div>
+      <section class="mb-2">
+        <p class="flex items-center justify-between py-3 mb-4">
+          <span class="text-black/70">{{itemsCount}} {{itemsCountLabel}}</span>
+          <span class="font-display text-2xl">{{total}} €</span>
+        </p>
 
-        <div class="flex items-center justify-between">
-          <dt>Frais de livraison estimés</dt>
-          <dd>{{shippingLabel}}</dd>
-        </div>
-
-        <hr class="border-black/10 my-4">
-
-        <div class="flex items-center justify-between font-semibold">
-          <dt>Total à payer</dt>
-          <dd>{{total}} €</dd>
-        </div>
-      </dl>
+        <p class="text-xs text-black/60">
+          <span class="inline-block w-2 h-2 bg-success rounded-full mr-2"></span>
+          Click & Collect - Retrait gratuit
+        </p>
+      </section>
 
       <a href="/checkout" data-link
          class="mt-6 inline-flex w-full items-center justify-center px-6 py-3 font-display uppercase

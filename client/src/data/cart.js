@@ -17,15 +17,12 @@ function save() {
 
 // Calculer les totaux
 function calcTotals() {
-    let subtotal = 0;
+    let total = 0;
     for (let item of items) {
-        subtotal += item.price * item.quantity;
+        total += item.price * item.quantity;
     }
     
-    let shipping = subtotal >= 80 ? 0 : (items.length > 0 ? 4.90 : 0);
-    let total = subtotal + shipping;
-    
-    return { subtotal, shipping, total };
+    return { total };
 }
 
 // Ajouter un produit
@@ -72,12 +69,6 @@ CartData.clear = function() {
     save();
 };
 
-// Vider le panier (alias)
-CartData.clearCart = function() {
-    items = [];
-    save();
-};
-
 // Récupérer les articles
 CartData.getItems = function() {
     return items;
@@ -103,8 +94,6 @@ CartData.getState = function() {
     return {
         items: items,
         itemCount: CartData.getItemCount(),
-        subtotal: totals.subtotal,
-        shipping: totals.shipping,
         total: totals.total,
         isEmpty: items.length === 0
     };

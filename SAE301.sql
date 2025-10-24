@@ -113,6 +113,39 @@ INSERT INTO `Product` (`id`, `name`, `category`) VALUES
 (29, 'Guirlande LED extérieure', 5),
 (30, 'Coffre de rangement extérieur', 5);
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Order`
+--
+
+CREATE TABLE `Order` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `total` decimal(10,2) NOT NULL,
+  `status` varchar(50) NOT NULL DEFAULT 'En Cours',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `User` (`id`)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `OrderItem`
+--
+
+CREATE TABLE `OrderItem` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `quantity` int NOT NULL,
+  `unit_price` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`order_id`) REFERENCES `Order` (`id`),
+  FOREIGN KEY (`product_id`) REFERENCES `Product` (`id`)
+);
+
 --
 -- Index pour les tables déchargées
 --
@@ -136,6 +169,8 @@ ALTER TABLE `Product`
   ADD PRIMARY KEY (`id`),
   ADD KEY `category` (`category`);
 
+
+
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
@@ -158,6 +193,8 @@ ALTER TABLE `Category`
 ALTER TABLE `Product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
+
+
 --
 -- Contraintes pour les tables déchargées
 --
@@ -167,6 +204,8 @@ ALTER TABLE `Product`
 --
 ALTER TABLE `Product`
   ADD CONSTRAINT `category` FOREIGN KEY (`category`) REFERENCES `Category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
 
 COMMIT;
 

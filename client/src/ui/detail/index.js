@@ -32,12 +32,13 @@ let DetailView = {
         var li = document.createElement('li');
         var btn = document.createElement('button');
         btn.type = 'button';
+        btn.style = 'border:none; background:none; padding:0; margin:0;';
         btn.setAttribute('data-src', '/assets/images/products/' + data.id + '/' + file);
         btn.className = (i === 0) ? 'bullets' : 'bullets-grey';
         var imgEl = document.createElement('img');
         imgEl.src = '/assets/images/products/' + data.id + '/' + file;
-        imgEl.alt = data.name || '';
-        imgEl.className = 'w-full aspect-[4/5] object-cover';
+        imgEl.alt = data.name || 'Image produit';
+        imgEl.style = 'width:70%; aspect-ratio:4/5; object-fit:cover; cursor: pointer;';
         btn.appendChild(imgEl);
 
         

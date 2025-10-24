@@ -1,0 +1,25 @@
+<article class="bg-white border border-black/20 rounded-lg p-8 shadow-sm md:mr-50 md:my-10">
+  <h2 class="font-display text-2xl mb-6">Récapitulatif de la commande</h2>
+
+  <section class="mb-6">
+    <p class="flex items-center justify-between py-3 mb-4">
+      <span class="text-black/70">{{cart-count}} article(s)</span>
+      <span class="font-display text-2xl">{{cart-total}} €</span>
+    </p>
+
+    <p class="text-sm text-black/60">
+      <span class="inline-block w-2 h-2 bg-success rounded-full mr-2"></span>
+      Click & Collect - Retrait en magasin gratuit
+    </p>
+  </section>
+
+  <button id="validate-order" 
+          class="w-full px-6 py-4 font-display text-lg uppercase bg-black text-white rounded-[var(--radius-btn)] hover:bg-black/90 transition-all cursor-pointer mb-4">
+    Valider la commande
+  </button>
+
+  <a href="/cart" data-link class="block text-center text-sm text-black/60 hover:text-black underline cursor-pointer">
+    Retour au panier
+  </a>
+</article>
+</article>
